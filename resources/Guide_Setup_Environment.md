@@ -25,13 +25,55 @@ git --version
 ```
 You should see the installed Git version.
 
-## 2. Install Cursor IDE
-Cursor is a modern IDE with built-in AI features that will help you throughout the course.
+## 2. Install a Code Editor
 
-- **Download**: Go to the [Cursor website](https://www.cursor.com/) and download the installer for your operating system.
-- **Note**: You have 14 days of premium usage of Cursor. After this period, you can continue using the free version.
+You can use any code editor you prefer. Here are some recommended options:
 
-## 3. Install Python
+### Option A: VS Code (Recommended)
+- **Download**: Go to the [VS Code website](https://code.visualstudio.com/) and download the installer.
+- Install the **Python** and **Jupyter** extensions from the Extensions sidebar.
+
+### Option B: Any editor of your choice
+- PyCharm, Sublime Text, or any editor you're comfortable with.
+
+## 3. Install Claude Code
+
+Claude Code is an AI-powered coding assistant that runs in your terminal. It can understand your codebase, write code, run commands, and help you build projects faster.
+
+### Installation:
+
+Claude Code requires Node.js. Install it first if you don't have it:
+- **Download Node.js**: Go to the [Node.js website](https://nodejs.org/) and download the LTS version.
+
+Then install Claude Code globally:
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### Usage:
+Navigate to your project directory and launch Claude Code:
+```bash
+cd your-project-folder
+claude
+```
+
+Claude Code will be your AI pair-programmer throughout this course. Use it to:
+- Generate code from natural language descriptions
+- Debug and fix issues in your code
+- Understand unfamiliar code
+- Run and test your application
+- Help with Git operations
+
+### Authentication:
+When you first run Claude Code, you will need to authenticate. You can log in with your Anthropic account or use an API key directly:
+```bash
+# Set your API key (the instructor will provide one during the course)
+export ANTHROPIC_API_KEY=your_api_key_here
+```
+
+For more information, see the [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code).
+
+## 4. Install Python
 We'll use Python 3.12 for this course.
 
 ### Windows/macOS:
@@ -49,20 +91,20 @@ python --version
 ```
 You should see "Python 3.12.x"
 
-## 4. Set Up Your Development Environment
+## 5. Set Up Your Development Environment
 
 You have two options for managing your Python environment:
 
 ### Option 1: Using Python's built-in venv (Recommended for beginners)
 ```bash
 # Create a new virtual environment
-python -m venv flask_env
+python -m venv genai_env
 
 # Activate the environment
 # On Windows:
-flask_env\Scripts\activate
+genai_env\Scripts\activate
 # On macOS/Linux:
-source flask_env/bin/activate
+source genai_env/bin/activate
 ```
 
 ### Option 2: Using Anaconda (Optional)
@@ -77,10 +119,10 @@ Anaconda provides a more comprehensive environment management system with additi
 #### Create and Activate Environment:
 ```bash
 # Create a new environment
-conda create -n flask_env python=3.12
+conda create -n genai_env python=3.12
 
 # Activate the environment
-conda activate flask_env
+conda activate genai_env
 ```
 
 ### Verification (for both options):
@@ -88,7 +130,7 @@ conda activate flask_env
 # Verify Python version
 python --version
 
-# Verify environment is active (should show flask_env)
+# Verify environment is active (should show genai_env)
 which python  # On macOS/Linux
 where python  # On Windows
 ```
@@ -96,32 +138,41 @@ where python  # On Windows
 ### Install Required Packages
 In your activated environment (using either venv or conda), run:
 ```bash
-pip install pandas numpy flask openai chromadb jupyter ipykernel
+pip install -r requirements.txt
+```
+
+Or install manually:
+```bash
+pip install pandas numpy flask anthropic chromadb jupyter ipykernel
 ```
 
 ### Verify Package Installation:
 ```bash
 # Test Flask installation
 python -c "import flask; print(flask.__version__)"
+# Test Anthropic SDK
+python -c "import anthropic; print('Anthropic SDK installed successfully')"
 # Test other packages
-python -c "import pandas as pd; import numpy as np; import openai; print('All packages installed successfully')"
+python -c "import pandas as pd; import numpy as np; print('All packages installed successfully')"
 ```
 
-## 5. Configure Cursor IDE
+## 6. Configure Your Editor
 
-### Install Required Extensions
-1. Open Cursor
+### If using VS Code:
+
+#### Install Required Extensions
+1. Open VS Code
 2. Go to Extensions (sidebar)
 3. Install these essential extensions:
    - Python
    - Jupyter
 
-### Configure Python Interpreter
+#### Configure Python Interpreter
 1. Open Command Palette (Ctrl+Shift+P / Cmd+Shift+P)
 2. Type "Python: Select Interpreter"
-3. Choose the `flask_env` environment you created
+3. Choose the `genai_env` environment you created
 
-## 6. Best Practices
+## 7. Best Practices
 
 ### Version Control
 - Initialize Git in your project directory
@@ -139,8 +190,14 @@ python -c "import pandas as pd; import numpy as np; import openai; print('All pa
 - Add comments and docstrings
 - Write tests for your code
 
+### Using Claude Code effectively
+- Be specific in your prompts: describe what you want clearly
+- Use it to scaffold boilerplate code, then refine
+- Ask it to explain code you don't understand
+- Use it to debug: paste error messages and ask for help
+
 ## Need Help?
 If you encounter any issues during setup:
-1. Ask Cursor or ChatGPT
+1. Ask Claude Code in your terminal
 2. Search for similar issues online
 3. Contact your instructor

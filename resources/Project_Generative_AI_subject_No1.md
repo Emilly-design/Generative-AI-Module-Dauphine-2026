@@ -1,20 +1,16 @@
-# Development of an End-to-End Web Application Leveraging Retrieval Augmented Generation (RAG) and OpenAI's API with Enterprise Data
+# Development of an End-to-End Web Application Leveraging Retrieval Augmented Generation (RAG) and Anthropic's Claude API with Enterprise Data
 
 **Course**: Generative AI  
 **University**: Dauphine-PSL University
 
 ## Project Description
 
-This project aims to develop a robust web application that integrates the principles of Retrieval Augmented Generation (RAG) and OpenAI's API. The application will utilize enterprise data to demonstrate the potential of Generative AI in enhancing productivity and task automatization, especially in customer interaction and customer service.
+This project aims to develop a robust web application that integrates the principles of Retrieval Augmented Generation (RAG) and Anthropic's Claude API. The application will utilize enterprise data to demonstrate the potential of Generative AI in enhancing productivity and task automatization, especially in customer interaction and customer service.
 
 ## Datasets
 
 Simulated enterprise data will be provided, which includes:
 - Twitter's customer support data: tweets from customers and replies from customer service
-- ~~Customer's emails and customer service agent's responses~~
-- ~~Customer service call transcripts~~
-- ~~Company Knowledge base PDF document~~
-- ~~Company's FAQ~~
 
 ## Objectives
 
@@ -31,7 +27,7 @@ Simulated enterprise data will be provided, which includes:
 
 3. **Development:**
    - Architectural design of the web application.
-   - Building functional back-end components of the application using Flask in Python, integrating OpenAI's API and a RAG system.
+   - Building functional back-end components of the application using Flask in Python, integrating Anthropic's Claude API and a RAG system.
    - Building a user-friendly front-end using HTML, CSS, and Javascript.
    - Storing data in a vector database, such as ChromaDB.
    - Version control with Git.
@@ -46,14 +42,26 @@ Simulated enterprise data will be provided, which includes:
 
 ## Getting Started
 
-1. Fill the form to get your OpenAI API key
+1. Your Anthropic API key will be provided by the instructor during the course.
 
-https://docs.google.com/spreadsheets/d/1Bq_fIELFZWANblbx1UL3CM1rpgHX-mx_8yABH-mYgMQ/edit?usp=sharing
+Set your API key as an environment variable:
+```bash
+# On macOS/Linux:
+export ANTHROPIC_API_KEY=your_api_key_here
 
-#### Please only use the following models from OpenAI (the other models, especially GPT-4o or GPT-o1, are too expensive and will result in consuming all the API Credit and ruin my bank account :():
+# On Windows (Command Prompt):
+set ANTHROPIC_API_KEY=your_api_key_here
 
-- `gpt-4o-mini` for ChatCompletion
-- `text-embedding-3-small` for Embeddings
+# On Windows (PowerShell):
+$env:ANTHROPIC_API_KEY="your_api_key_here"
+```
+
+Or use the `config.ini` file (see the notebook for an example).
+
+#### Please only use the following models from Anthropic (to manage API costs):
+
+- `claude-haiku-3-5-20241022` (Claude 3.5 Haiku) for fast and cheap responses
+- For embeddings, use an open-source model via ChromaDB's built-in embedding function, or use `voyage-3-lite` from Voyage AI (available through the Anthropic ecosystem)
 
 2. Install the working environment following the guide
 
@@ -63,7 +71,7 @@ https://docs.google.com/spreadsheets/d/1Bq_fIELFZWANblbx1UL3CM1rpgHX-mx_8yABH-mY
 
 4. Fork the course repository into your GitHub account
 
-Course repository to fork : https://github.com/End2EndAI/Generative-AI-Module-Dauphine-2025
+Course repository to fork : https://github.com/End2EndAI/Generative-AI-Module-Dauphine-2026
 
 Click on the `Fork` button on the page above, while being connected to your GitHub account.
 
@@ -78,18 +86,16 @@ To get the `<YOUR_FORKED_REPOSITORY_URL>`, go into your forked repository, and c
 6. **IMPORTANT** : Copy or recreate the virtual environment
 
 You have two options:
-- Copy the `flask_env` folder created during the setup into your forked project folder
+- Copy the `genai_env` folder created during the setup into your forked project folder
 - Or recreate the virtual environment in your project folder by following the same steps as in the setup guide
 
-You should have a folder `flask_env` in the folder `Generative-AI-Module-Dauphine-2025`
+You should have a folder `genai_env` in the folder `Generative-AI-Module-Dauphine-2026`
 
-7. Open Cursor and open the repository
+7. Open your code editor and open the repository
 
-Click on `File`, `Open Folder`.
+8. Setup your virtual env in your editor
 
-8. Setup your virtual env in Cursor
-
-Click on `Help`, `Show All Commands`. Type `Python: Select Interpreter` and choose your virtual env (`flask_env` from the guide).
+If using VS Code: Click on `Help`, `Show All Commands`. Type `Python: Select Interpreter` and choose your virtual env (`genai_env` from the guide).
 
 9. Test your environment
 
@@ -99,24 +105,22 @@ Open the files `notebooks\getting_started.ipynb` and `test_flask_app.py`, and ru
 
 Use the sample data first `data\twitter_data_clean_sample.csv`. 
 
-#### Warning : there are a lot of data in the full csv data `data\twitter_data_clean.csv`, please be careful especially when processing that data with OpenAI to not consume all the API Credit.
+#### Warning : there are a lot of data in the full csv data `data\twitter_data_clean.csv`, please be careful especially when processing that data with the API to not consume all the API Credit.
 
-11. You are ready to go 🥳
+11. You are ready to go!
 
 
 ## Suggestion of the way of work
 
-- USE CURSOR AS MUCH AS YOU CAN TO GENERATE CODE
+- USE CLAUDE CODE AS MUCH AS YOU CAN TO GENERATE CODE
 
 - Start with comprehending the data using the sample file and establishing a clear objective for your application, and how your application will look like / work.
 
-- Initially, construct a basic prototype of the front-end interface, utilizing ChatGPT for this purpose. I suggest to use HTML, CSS and JS for simplicity, but you are welcome to use more advanced frameworks.
+- Initially, construct a basic prototype of the front-end interface, utilizing Claude Code for this purpose. I suggest to use HTML, CSS and JS for simplicity, but you are welcome to use more advanced frameworks.
 
 - Once the primary features of the front-end are operational, proceed to develop a straightforward Flask back-end. This could start as simply as returning the input message. Ensure the Flask server is operational and effectively communicating with the front-end. Understand how the connection works between the front-end and the back-end. Experiment by modifying the front, then the back, ...
 
-- Next, enhance the Flask back-end by integrating the Retrieval-Augmented Generation (RAG) system. Start by utilizing the provided sample file `twitter_data_clean_sample.csv` to enable the system to identify and respond with the most relevant tweet, using GPT-generated answers. Initially, employ an Excel file for storing embeddings, progressing later to a more sophisticated vector database solution, such as ChromaDB.
-
-You can use the link in the `Resources` section below for the RAG tutorial from OpenAI.
+- Next, enhance the Flask back-end by integrating the Retrieval-Augmented Generation (RAG) system. Start by utilizing the provided sample file `twitter_data_clean_sample.csv` to enable the system to identify and respond with the most relevant tweet, using Claude-generated answers. Initially, employ an Excel file for storing embeddings, progressing later to a more sophisticated vector database solution, such as ChromaDB.
 
 - Evaluate your system using the evaluation dataset `data\twitter_data_clean_eval.csv`.
 
@@ -124,10 +128,10 @@ You can use the link in the `Resources` section below for the RAG tutorial from 
 
 ## Resources
 
-1. [Github of the Translation App for the code structure](https://github.com/End2EndAI/travel-ai-translator)
-2. [Guide to use the OpenAI API](https://platform.openai.com/docs/overview)
-3. [Guide to build the RAG system](https://platform.openai.com/docs/tutorials/web-qa-embeddings)
-5. [Guide to implement a ChromaDB vector database](https://docs.trychroma.com/getting-started) 
-6. [Free hosting for Flask app](https://www.pythonanywhere.com)
-7. How to use Git, create a virtual env and how to push on GitHub from Cursor: Ask Cursor Composer 😉
-8. ChatGPT : https://chat.openai.com/
+1. [Guide to use the Anthropic API](https://docs.anthropic.com/en/docs/build-with-claude/overview)
+2. [Anthropic Python SDK](https://github.com/anthropics/anthropic-sdk-python)
+3. [Guide to build a RAG system](https://docs.anthropic.com/en/docs/build-with-claude/retrieval-augmented-generation)
+4. [Guide to implement a ChromaDB vector database](https://docs.trychroma.com/getting-started)
+5. [Free hosting for Flask app](https://www.pythonanywhere.com)
+6. How to use Git, create a virtual env and how to push on GitHub: Ask Claude Code!
+7. [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)

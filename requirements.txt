@@ -1,4 +1,8 @@
 pandas
 numpy
 flask
-openai
+anthropic
+chromadb
+sentence-transformers
+jupyter
+ipykernel
