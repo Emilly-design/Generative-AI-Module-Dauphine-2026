@@ -99,7 +99,7 @@ If using VS Code: Click on `Help`, `Show All Commands`. Type `Python: Select Int
 
 9. Test your environment
 
-Open the files `notebooks\getting_started.ipynb` and `test_flask_app.py`, and run them, to see if everything is well configured.
+Open the file `notebooks\getting_started.ipynb` and run it, to see if everything is well configured.
 
 10. Check the data with the notebook `notebooks\getting_started.ipynb`
 

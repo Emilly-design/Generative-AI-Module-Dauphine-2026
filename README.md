@@ -9,10 +9,7 @@ Welcome to the Generative AI course repository at Dauphine-PSL University for th
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the example Flask application:
-   ```bash
-   python test_flask_app.py
-   ```
+3. Open `notebooks/getting_started.ipynb` to verify your setup
 
 ## Repository Structure
 
@@ -26,8 +23,6 @@ Welcome to the Generative AI course repository at Dauphine-PSL University for th
 │   ├── Project_Generative_AI_subject_No1.md
 │   ├── Project_Generative_AI_subject_No2.md
 │   └── Project_Generative_AI_subject_No3.md
-├── templates/             # HTML templates for the Flask application
-├── test_flask_app.py      # Example Flask application (from the course)
 ├── requirements.txt       # Python package dependencies
 └── config.ini             # Configuration file
 ```
@@ -73,10 +68,6 @@ Located in `resources/Project_Generative_AI_subject_No3.md`
 - Voice-to-text recording for capturing ideas on the go (biking, walking, driving)
 - LLM-powered structuring and enhancement of raw voice notes
 - Local storage and idea management
-
-## Example Implementation
-
-The repository includes a sample Flask application (`test_flask_app.py`) that demonstrates basic Flask setup, route handling, template rendering, and API endpoints.
 
 ## Dependencies
 
