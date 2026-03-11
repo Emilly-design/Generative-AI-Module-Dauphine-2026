@@ -1,5 +1,10 @@
 # Generative AI Course Repository 2026
 
+> **Copyright © 2026 Louis Fontaine — All course materials are protected.**
+> Licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+> You may **not** use these materials to teach your own course, redistribute modified versions, or monetize this content in any form.
+> Attribution is required for any public reference. Contact: louis.fontaine.pro@gmail.com
+
 Welcome to the Generative AI course repository at Dauphine-PSL University for the Master IASD Executive. This repository contains essential materials for the course, including lecture slides, a setup guide, and detailed project descriptions.
 
 ## Quick Start
