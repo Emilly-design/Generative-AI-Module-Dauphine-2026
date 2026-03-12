@@ -18,8 +18,13 @@ app = Flask(__name__)
 
 COMPANIES = ["AmazonHelp", "AppleSupport", "SpotifyCares", "Uber_Support"]
 
-# Index data at startup
-index_data()
+rag_initialized = False
+
+def ensure_rag():
+    global rag_initialized
+    if not rag_initialized:
+        index_data()
+        rag_initialized = True
 
 
 @app.route("/")
@@ -35,6 +40,9 @@ def chat():
 
     if not user_message:
         return jsonify({"error": "Message vide"}), 400
+
+    # Initialize RAG on first request
+    ensure_rag()
 
     # RAG: retrieve similar past interactions
     similar = search(user_message, company, n_results=3)
