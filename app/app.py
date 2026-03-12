@@ -4,11 +4,13 @@ import anthropic
 from flask import Flask, render_template, request, jsonify
 from rag import index_data, search
 
-# Load API key
+# Load API key: environment variable first, then config.ini fallback
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-config = configparser.ConfigParser()
-config.read(os.path.join(BASE_DIR, "../config.ini"))
-ANTHROPIC_KEY = config.get("ANTHROPIC_API", "ANTHROPIC_KEY")
+ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY")
+if not ANTHROPIC_KEY:
+    config = configparser.ConfigParser()
+    config.read(os.path.join(BASE_DIR, "../config.ini"))
+    ANTHROPIC_KEY = config.get("ANTHROPIC_API", "ANTHROPIC_KEY")
 
 client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
 
@@ -77,4 +79,5 @@ Your reply:"""
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
